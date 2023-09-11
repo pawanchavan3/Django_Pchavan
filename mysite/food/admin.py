@@ -1,5 +1,5 @@
 from django. contrib import admin 
-from food.models import item
+from food.models import Item
 
 # Register your models here.
-admin.site.register(item)
+admin.site.register(Item)
