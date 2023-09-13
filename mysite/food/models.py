@@ -4,7 +4,7 @@ from django.db import models
 
 class Item(models.Model):
     prod_code=models.IntegerField(default=100)
-    for_user=models.CharField(max_length=100,default=100)    
+    for_user=models.CharField(max_length=100,default="xyz")    
     item_name=models.CharField(max_length=50)
     item_desc=models.CharField(
         max_length=300,
