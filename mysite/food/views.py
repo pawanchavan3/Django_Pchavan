@@ -17,3 +17,5 @@ def detail(request,item_id):
         'item':item
     }
     return render(request,'food/detail.html',context)
+def create_item(request):
+    pass
