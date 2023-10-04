@@ -41,3 +41,15 @@ def create_item(request):
         return redirect('food:index')
 
         return render(request, 'food/item-form.html', context)
+    def delete_item(request, id):
+        item = Item.objects.get(pk=id)
+
+        context = {
+        'item':item
+        }
+
+        if request.method == 'POST':
+            item.delete()
+            return redirect('food:index')
+
+        return render(request, 'food/item-delete.html', context)
