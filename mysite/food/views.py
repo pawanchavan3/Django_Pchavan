@@ -30,7 +30,7 @@ def create_item(request):
 
 def update_item(request, id):
     item = Item.objects.get(pk=id)
-    form = ItemForm(request.POST or None, instance=item)
+    form = Itemform(request.POST or None, instance=item)
 
     context = {
     'form':form
