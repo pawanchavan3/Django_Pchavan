@@ -28,6 +28,15 @@
 
         </div>
     </nav>
+    {% if messages %}
+
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    {% endif %}
     <!-- for spacing -->
     <div class="mb-5"></div>
     {% block body %}
