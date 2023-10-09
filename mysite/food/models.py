@@ -7,7 +7,7 @@ class Item(models.Model):
     for_user=models.CharField(max_length=100,default="xyz")    
     item_name=models.CharField(max_length=50)
     item_desc=models.CharField(
-        max_length=300,
+        max_length=500,
         default='''Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis quae nemo ducimus, aperiam reprehenderit sit provident quam, enim tempore ea eligendi vel facere? In numquam deleniti, debitis quod odit tenetur.'''
         )
     item_price=models.IntegerField()
