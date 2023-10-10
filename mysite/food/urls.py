@@ -4,19 +4,24 @@ from food import views
 app_name = 'food'
 
 urlpatterns = [
-    #function based index view
-    #--------------------------------------------------------------------------
-    path('home/',views.index,name='index'),
-    #function based detail view
-    #--------------------------------------------------------------------------
+    # function based index view
+    # -------------------------------------------------------------------------------
+    # path('home/', views.index, name='index'),
+
+    # class based index view
+    # -------------------------------------------------------------------------------
+    path('home/', views.IndexClassView.as_view(), name='index'),
+
+    # function based detail view
+    # -------------------------------------------------------------------------------
     path('detail/<int:item_id>/',views.detail,name='detail'),
-    #function based create_item view
-    #--------------------------------------------------------------------------
+    # function based create item view
+    # -------------------------------------------------------------------------------
     path('add/',views.create_item,name='create_item'),
-    #function based update_item view
-    #--------------------------------------------------------------------------
+    # function based update item view
+    # -------------------------------------------------------------------------------
     path('update/<int:id>/', views.update_item, name='update_item'),
-    #function based delete_item view
-    #--------------------------------------------------------------------------
+    # function based delete item view
+    # -------------------------------------------------------------------------------
     path('delete/<int:id>/', views.delete_item, name='delete_item'),
 ]
