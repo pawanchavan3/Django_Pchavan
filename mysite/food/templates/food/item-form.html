@@ -1,22 +1,49 @@
 {% extends 'food/base.html' %}
 
 {% block body %}
+<br><br><br>
+<div class="container" >
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title">
+                        Sign Up
 
-<form method="POST">
-    {% csrf_token %}
-    <label>Product Code: </label><br>
-    {{ form.prod_code }}
-    <br><label>For User: </label><br>
-    {{ form.for_user }}
-    <br><label>Item Name: </label><br>
-    {{ form.item_name }}
-    <br><label>Item Description: </label><br>
-    {{ form.item_desc }}
-    <br><label>Item Price: </label><br>
-    {{ form.item_price }}
-    <br><label>Item Image: </label><br>
-    {{ form.item_image }}
-    <button type="submit">Save</button>
-</form>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label class="offset-md-1">Product Code: </label><br>
+                        <span class="offset-md-1">{{ form.prod_code }}</span><br>
+
+                        <label class="offset-md-1">For User: </label><br>
+                        <span class="offset-md-1">{{ form.for_user }}</span>
+
+                        <label class="offset-md-1">Item Name: </label><br>
+                        <span class="offset-md-1">{{ form.item_name }}</span>
+
+                        <label class="offset-md-1">Item Description: </label><br>
+                        <span class="offset-md-1">{{ form.item_desc }}</span> 
+
+                        <label class="offset-md-1">Item Price: </label><br>
+                        <span class="offset-md-1">{{ form.item_price }}<span>
+
+                        <label class="offset-md-1">Item Image: </label><br>
+                        <span class="offset-md-1">{{ form.item_image }}</span><br>
+
+                        <br><button class="btn btn-success btn-sm offset-md-4" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<br><br><br>
+
 
 {% endblock %}
