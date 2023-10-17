@@ -6,7 +6,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-
+from food.models import History
 # Create your views here.
 # -------------------------------------------------------------------------------
 
@@ -87,6 +87,14 @@ def update_item(request, id):
 
     if form.is_valid():
         form.save()
+        obj_History=History(
+            user_name=request.user.username,
+            prod_ref=form.instance.prod_code,
+            item_name=request.POST.get('item_name'),       #form.instance.item_name
+            op_type='updated'
+
+        )
+        obj_History.save()
         return redirect('food:index')
 
     return render(request, 'food/item-form.html', context)
@@ -100,7 +108,17 @@ class CreateItem(CreateView):
 
     def form_valid(self,form):
         form.instance.user=self.request.user
-        return super().form_invalid(form)
+
+        obj_History=History(
+            user_name=self.request.user.username,
+            prod_ref=form.instance.prod_code,
+            item_name=self.request.POST.get('item_name'),       #form.instance.item_name
+            op_type='created'
+
+        )
+        obj_History.save()
+
+        return super().form_valid(form)
     
 
 # function based delete item view

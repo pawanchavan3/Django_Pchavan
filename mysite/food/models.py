@@ -29,7 +29,7 @@ class History(models.Model):
     item_name=models.CharField(max_length=200)
     op_type=models.CharField(max_length=100)
 
-    def _str_(self):
+    def __str__(self):
         return str(
             (
                 self.prod_ref,
@@ -38,5 +38,3 @@ class History(models.Model):
                 self.op_type
             )
         )
-
-       
