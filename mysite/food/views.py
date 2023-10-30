@@ -35,7 +35,7 @@ def index(request):
     }
     return render(request, 'food/index.html',context)
 # class based index view
-# -------------------------------------------------------------------------------
+# ------------------------- ------------------------------------------------------
 
 class IndexClassView(ListView):
 
@@ -44,18 +44,30 @@ class IndexClassView(ListView):
     template_name = 'food/index.html'
 
 
-# function based detail view
-# -------------------------------------------------------------------------------
+# function based detail v iew
+# ---------------------------   ------ --   --------------------------------------------
 def detail(request,item_id):
 
-    item=Item.objects.get(pk=item_id)
+    item=Item.objects.get(pk=item_id )
+    
     hist=History.objects.filter(
-        prod_ref=item.prod_code
+        prod_ref=item.prod_code)
+    
+    Obj_CusOrd = CusOrders.objects.filter(
+        prod_code=item.prod_code
     )
+     # restaurant and admin
+    if request.user.profile.user_type == 'Rest' or request.user.profile.user_type == 'Admin':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code
+        )
 
-    Obj_CusOrd = CusOrders.objects.all()
-
-
+    # customer
+    elif request.user.profile.user_type == 'Cust':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code,
+            user = request.user.username
+        )
     context={
         'item':item,
         'hist':hist,
