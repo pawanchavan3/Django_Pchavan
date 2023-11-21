@@ -34,7 +34,7 @@ class CusRatingFeedback(models.Model):
     ratings=models.FloatField()
     feedback=models.CharField(max_length=200),
     username=models.CharField(max_length=200,default='username')
-    user_type=models.CharField(max_length=200,default='cust')
+    user_type=models.CharField(max_length=200,default='Cust')
 
     def __str__(self):
         return str(
