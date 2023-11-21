@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from users.models import CusOrders
+from users.models import CusOrders,CusRatingFeedback
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -14,4 +14,9 @@ class RegisterForm(UserCreationForm):
 class CusOrdersUpd(forms.ModelForm):
     class Meta:
         model = CusOrders
-        fields = ['order_id','prod_code','quantity','user']
+        fields = ['quantity']
+
+class CusRatFeedForm(forms.ModelForm):
+    class Meta:
+        model = CusRatingFeedback
+        fields = ['ratings', 'feedback']
